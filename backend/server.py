@@ -237,12 +237,12 @@ def fallback_summary(text: str, max_chars: int = 500) -> str:
     if len(text) <= max_chars:
         return text
     # pick first sentences up to limit
-    parts = [p.strip() for p in text.split('. ') if len(p.strip()) &gt; 20]
+    parts = [p.strip() for p in text.split('. ') if len(p.strip()) > 20]
     out = []
     total = 0
     for s in parts:
         s2 = s if s.endswith('.') else s + '.'
-        if total + len(s2) &gt; max_chars:
+        if total + len(s2) > max_chars:
             break
         out.append(s2)
         total += len(s2)
@@ -324,14 +324,14 @@ async def place_trade(req: TradeRequest):
 
     exec_price = float(q.price)
     if req.order_type == 'limit':
-        if req.side == 'buy' and req.limit_price is not None and exec_price &gt; req.limit_price:
+        if req.side == 'buy' and req.limit_price is not None and exec_price > req.limit_price:
             raise HTTPException(status_code=400, detail="Limit buy not filled at current price")
-        if req.side == 'sell' and req.limit_price is not None and exec_price &lt; req.limit_price:
+        if req.side == 'sell' and req.limit_price is not None and exec_price < req.limit_price:
             raise HTTPException(status_code=400, detail="Limit sell not filled at current price")
 
     if req.side == 'buy':
         cost = exec_price * req.qty
-        if cost &gt; p.cash + 1e-9:
+        if cost > p.cash + 1e-9:
             raise HTTPException(status_code=400, detail="Insufficient cash")
         # Update cash
         p.cash -= cost
@@ -346,7 +346,7 @@ async def place_trade(req: TradeRequest):
             pos = Position(ticker=ticker, qty=req.qty, avg_price=exec_price, stop_loss=req.stop_loss, take_profit=req.take_profit)
         await upsert_position(pos)
     else:  # sell
-        if ticker not in pos_map or pos_map[ticker].qty &lt; req.qty:
+        if ticker not in pos_map or pos_map[ticker].qty < req.qty:
             raise HTTPException(status_code=400, detail="Insufficient shares to sell")
         proceeds = exec_price * req.qty
         p.cash += proceeds
