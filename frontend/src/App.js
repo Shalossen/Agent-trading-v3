@@ -7,7 +7,8 @@ import { Button } from "./components/ui/button";
 import { Input } from "./components/ui/input";
 import { Label } from "./components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./components/ui/select";
-import { toast, Toaster } from "./components/ui/sonner";
+import { Toaster } from "./components/ui/sonner";
+import { toast } from "sonner";
 import { TrendingUp, DollarSign, Newspaper, SendHorizonal, RefreshCw } from "lucide-react";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
