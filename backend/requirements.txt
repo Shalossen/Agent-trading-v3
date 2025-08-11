@@ -11,7 +11,7 @@ pyjwt>=2.10.1
 passlib>=1.7.4
 tzdata>=2024.2
 motor==3.3.1
-pytest&gt;=8.0.0
+pytest>=8.0.0
 black&gt;=24.1.1
 isort&gt;=5.13.2
 flake8&gt;=7.0.0
