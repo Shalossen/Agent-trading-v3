@@ -228,7 +228,7 @@ function App() {
                         <td>${p.avg_price.toFixed(4)}</td>
                         <td>${(p.last ?? 0).toFixed(4)}</td>
                         <td>${(p.value ?? 0).toFixed(2)}</td>
-                        <td className={p.unrealized_pl &gt;= 0 ? "text-green-400" : "text-red-400"}>${(p.unrealized_pl ?? 0).toFixed(2)}</td>
+                        <td className={p.unrealized_pl >= 0 ? "text-green-400" : "text-red-400"}>${(p.unrealized_pl ?? 0).toFixed(2)}</td>
                         <td className="text-slate-400 text-xs">SL: {p.stop_loss ?? '—'} | TP: {p.take_profit ?? '—'}</td>
                       </tr>
                     )) : (
