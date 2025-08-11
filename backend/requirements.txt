@@ -13,7 +13,7 @@ tzdata>=2024.2
 motor==3.3.1
 pytest>=8.0.0
 black>=24.1.1
-isort&gt;=5.13.2
+isort>=5.13.2
 flake8&gt;=7.0.0
 mypy&gt;=1.8.0
 python-jose&gt;=3.3.0
