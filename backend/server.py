@@ -234,7 +234,7 @@ async def summarize_text_llm(text: str, max_length: int = 180) -> Optional[str]:
 # Simple fallback extractive summary
 def fallback_summary(text: str, max_chars: int = 500) -> str:
     text = (text or '').replace('\n', ' ')
-    if len(text) &lt;= max_chars:
+    if len(text) <= max_chars:
         return text
     # pick first sentences up to limit
     parts = [p.strip() for p in text.split('. ') if len(p.strip()) &gt; 20]
