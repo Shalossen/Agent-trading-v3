@@ -167,7 +167,7 @@ async def validate_microcap_us(ticker: str) -> None:
     if q.market_cap is None:
         raise HTTPException(status_code=400, detail="Unable to determine market cap for ticker")
     if q.market_cap >= 300_000_000:
-        raise HTTPException(status_code=400, detail="Only micro-caps (market cap &lt; $300M) are allowed")
+        raise HTTPException(status_code=400, detail="Only micro-caps (market cap < $300M) are allowed")
     # Basic US listing proxy: USD currency
     if (q.currency or "").upper() != "USD":
         raise HTTPException(status_code=400, detail="Only US-listed (USD) tickers are allowed")
